@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎀 나만의 러블리 아바타 드레스업 🎀</title>
+    <style>
+        :root {
+            --bg-color: #fff1f2;
+            --card-bg: #ffffff;
+            --primary: #fb7185;
+            --primary-hover: #f43f5e;
+            --text-color: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(251, 113, 133, 0.15);
+            padding: 28px;
+            width: 100%;
+            max-width: 820px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        /* 아바타 스테이지 */
+        .avatar-section {
+            flex: 1.1;
+            min-width: 290px;
+            background: linear-gradient(180deg, #fff5f7 0%, #ffe4e6 100%);
+            border: 2px solid #fecdd3;
+            border-radius: 20px;
+            height: 440px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .avatar-stage {
+            width: 240px;
+            height: 400px;
+            position: relative;
+        }
+
+        /* SVG 아바타 레이어 */
+        .layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: all 0.15s ease-in-out;
+        }
+
+        /* 컨트롤 패널 */
+        .control-section {
+            flex: 1;
+            min-width: 290px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .category-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #64748b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .options-grid {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-opt {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-opt:hover {
+            background: #fff1f2;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .action-btns {
+            margin-top: auto;
+            padding-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .btn-random {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            color: white;
+        }
+
+        .btn-random:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .btn-reset {
+            background-color: #f1f5f9;
+            color: #64748b;
+        }
+
+        .btn-reset:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <h1>✨ 나만의 러블리 캐릭터 드레스업 ✨</h1>
+
+    <!-- 왼쪽 캐릭터 표시 영역 -->
+    <div class="avatar-section">
+        <div class="avatar-stage">
+            <!-- 1. 기본 마네킹 (피부, 얼굴, 팔) -->
+            <svg class="layer" viewBox="0 0 240 400">
+                <!-- 뒤쪽 땋은 머리/그림자 베이스 -->
+                <ellipse cx="120" cy="100" rx="36" ry="38" fill="#ffe4d6"/>
+                
+                <!-- 팔 (팔 위치 자연스럽게) -->
+                <!-- 왼팔 -->
+                <path d="M 86 135 C 70 160 65 200 70 230 C 73 235 78 235 80 230 C 78 200 84 165 94 142 Z" fill="#ffe4d6"/>
+                <!-- 오른팔 -->
+                <path d="M 154 135 C 170 160 175 200 170 230 C 167 235 162 235 160 230 C 162 200 156 165 146 142 Z" fill="#ffe4d6"/>
+
+                <!-- 몸통 피부 -->
+                <path d="M 104 125 L 136 125 L 140 215 L 100 215 Z" fill="#ffe4d6"/>
+                <!-- 목 -->
+                <rect x="111" y="118" width="18" height="16" rx="4" fill="#fcd5c1"/>
+
+                <!-- 얼굴 -->
+                <ellipse cx="120" cy="92" rx="34" ry="34" fill="#ffe4d6"/>
+
+                <!-- 다리 -->
+                <rect x="103" y="210" width="13" height="125" rx="6.5" fill="#ffe4d6"/>
+                <rect x="124" y="210" width="13" height="125" rx="6.5" fill="#ffe4d6"/>
+
+                <!-- 눈 & 볼터치 -->
+                <!-- 왼쪽 눈 -->
+                <ellipse cx="107" cy="92" rx="4.5" ry="6" fill="#2d3748"/>
+                <circle cx="108.5" cy="90" r="1.8" fill="#ffffff"/>
+                <!-- 오른쪽 눈 -->
+                <ellipse cx="133" cy="92" rx="4.5" ry="6" fill="#2d3748"/>
+                <circle cx="134.5" cy="90" r="1.8" fill="#ffffff"/>
+                <!-- 볼터치 -->
+                <ellipse cx="102" cy="98" rx="5" ry="3" fill="#ffb3ba" opacity="0.6"/>
+                <ellipse cx="138" cy="98" rx="5" ry="3" fill="#ffb3ba" opacity="0.6"/>
+                <!-- 입 -->
+                <path d="M 116 102 Q 120 106 124 102" stroke="#e57373" stroke-width="2" stroke-linecap="round" fill="none"/>
+            </svg>
+
+            <!-- 2. 하의 레이어 -->
+            <svg class="layer" id="layerBottom" viewBox="0 0 240 400"></svg>
+
+            <!-- 3. 상의 레이어 -->
+            <svg class="layer" id="layerTop" viewBox="0 0 240 400"></svg>
+
+            <!-- 4. 헤어 레이어 (얼굴 위쪽) -->
+            <svg class="layer" id="layerHair" viewBox="0 0 240 400"></svg>
+
+            <!-- 5. 신발 레이어 -->
+            <svg class="layer" id="layerShoes" viewBox="0 0 240 400"></svg>
+        </div>
+    </div>
+
+    <!-- 오른쪽 선택 옵션 -->
+    <div class="control-section">
+        <div>
+            <div class="category-title">💇‍♀️ 헤어 스타일</div>
+            <div class="options-grid">
+                <button class="btn-opt" onclick="setHair(0)">숏컷</button>
+                <button class="btn-opt" onclick="setHair(1)">러블리 단발</button>
+                <button class="btn-opt" onclick="setHair(2)">웨이브 웨이브</button>
+                <button class="btn-opt" onclick="setHair(3)">양갈래 머리</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="category-title">👕 상의 (Top)</div>
+            <div class="options-grid">
+                <button class="btn-opt" onclick="setTop(0)">기본 끈나시</button>
+                <button class="btn-opt" onclick="setTop(1)">크롭 핑크티</button>
+                <button class="btn-opt" onclick="setTop(2)">개나리 맨투맨</button>
+                <button class="btn-opt" onclick="setTop(3)">오버핏 후드티</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="category-title">👖 하의 (Bottom)</div>
+            <div class="options-grid">
+                <button class="btn-opt" onclick="setBottom(0)">기본</button>
+                <button class="btn-opt" onclick="setBottom(1)">와이드 청바지</button>
+                <button class="btn-opt" onclick="setBottom(2)">플리츠 스커트</button>
+                <button class="btn-opt" onclick="setBottom(3)">키치 반바지</button>
+            </div>
+        </div>
+
+        <div>
+            <div class="category-title">👢 신발 (Shoes)</div>
+            <div class="options-grid">
+                <button class="btn-opt" onclick="setShoes(0)">맨발</button>
+                <button class="btn-opt" onclick="setShoes(1)">캔버스 운동화</button>
+                <button class="btn-opt" onclick="setShoes(2)">시크 롱부츠</button>
+                <button class="btn-opt" onclick="setShoes(3)">트렌디 워커</button>
+            </div>
+        </div>
+
+        <div class="action-btns">
+            <button class="btn-action btn-random" onclick="randomStyle()">🎲 랜덤 코디</button>
+            <button class="btn-action btn-reset" onclick="resetStyle()">🔄 초기화</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 그래픽 위치 정밀 조정한 SVG 파트들
+    const hairs = [
+        // 0: 숏컷
+        `<path d="M 88 78 C 85 50 110 42 120 42 C 130 42 155 50 152 78 C 150 70 142 62 120 62 C 98 62 90 70 88 78 Z" fill="#5a3825"/>
+         <path d="M 88 72 C 95 85 105 85 110 82 C 105 72 95 70 88 72 Z" fill="#5a3825"/>
+         <path d="M 152 72 C 145 85 135 85 130 82 C 135 72 145 70 152 72 Z" fill="#5a3825"/>`,
+        
+        // 1: 러블리 단발
+        `<path d="M 84 88 C 80 50 110 40 120 40 C 130 40 160 50 156 88 C 160 115 148 125 144 120 C 148 95 142 62 120 62 C 98 62 92 95 96 120 C 92 125 80 115 84 88 Z" fill="#7c4a3a"/>
+         <path d="M 90 70 C 100 84 115 84 120 82 C 120 70 102 65 90 70 Z" fill="#7c4a3a"/>`,
+        
+        // 2: 웨이브 긴머리
+        `<path d="M 82 85 C 80 45 110 38 120 38 C 130 38 160 45 158 85 C 165 130 150 180 142 200 C 136 195 148 140 144 100 C 145 70 135 60 120 60 C 105 60 95 70 96 100 C 92 140 104 195 98 200 C 90 180 75 130 82 85 Z" fill="#332211"/>
+         <path d="M 88 70 C 100 84 118 84 122 80 C 115 68 100 65 88 70 Z" fill="#332211"/>`,
+
+        // 3: 양갈래 머리
+        `<path d="M 86 78 C 84 48 110 40 120 40 C 130 40 156 48 154 78 C 150 62 140 60 120 60 C 100 60 90 62 86 78 Z" fill="#e07a5f"/>
+         <path d="M 88 72 C 100 84 115 84 120 80 C 112 68 98 65 88 72 Z" fill="#e07a5f"/>
+         <!-- 양갈래 묶음 -->
+         <path d="M 82 76 C 65 85 55 120 62 145 C 68 148 74 130 78 100 C 82 90 84 80 82 76 Z" fill="#e07a5f"/>
+         <path d="M 158 76 C 175 85 185 120 178 145 C 172 148 166 130 162 100 C 158 90 156 80 158 76 Z" fill="#e07a5f"/>
+         <circle cx="82" cy="80" r="4" fill="#fb7185"/>
+         <circle cx="158" cy="80" r="4" fill="#fb7185"/>`
+    ];
+
+    const tops = [
+        "", // 0: 민소매 기본
+        // 1: 크롭 핑크티
+        `<path d="M 100 128 L 140 128 L 142 165 L 98 165 Z" fill="#f472b6"/>
+         <path d="M 88 130 L 102 128 L 98 148 L 84 144 Z" fill="#f472b6"/>
+         <path d="M 152 130 L 138 128 L 142 148 L 156 144 Z" fill="#f472b6"/>
+         <path d="M 112 128 Q 120 134 128 128" stroke="#ffffff" stroke-width="2" fill="none"/>`,
+        
+        // 2: 개나리 맨투맨
+        `<path d="M 98 126 L 142 126 L 143 178 L 97 178 Z" fill="#facc15"/>
+         <path d="M 86 130 L 100 126 L 90 170 L 78 165 Z" fill="#facc15"/>
+         <path d="M 154 130 L 140 126 L 150 170 L 162 165 Z" fill="#facc15"/>`,
+        
+        // 3: 오버핏 후드티
+        `<path d="M 96 125 L 144 125 L 146 188 L 94 188 Z" fill="#60a5fa"/>
+         <path d="M 84 128 L 98 125 L 86 180 L 74 174 Z" fill="#60a5fa"/>
+         <path d="M 156 128 L 142 125 L 154 180 L 166 174 Z" fill="#60a5fa"/>
+         <!-- 주머니 -->
+         <path d="M 104 165 L 136 165 L 132 182 L 108 182 Z" fill="#3b82f6"/>`
+    ];
+
+    const bottoms = [
+        "", // 0: 기본
+        // 1: 와이드 청바지 (상의와 딱 맞물리게 연결)
+        `<path d="M 98 165 L 142 165 L 145 315 L 122 315 L 120 205 L 118 315 L 95 315 Z" fill="#3b82f6"/>
+         <line x1="120" y1="165" x2="120" y2="200" stroke="#1d4ed8" stroke-width="2"/>`,
+        
+        // 2: 플리츠 스커트
+        `<path d="M 99 162 L 141 162 L 152 212 L 88 212 Z" fill="#f43f5e"/>
+         <line x1="108" y1="162" x2="102" y2="212" stroke="#be123c" stroke-width="1.5"/>
+         <line x1="120" y1="162" x2="120" y2="212" stroke="#be123c" stroke-width="1.5"/>
+         <line x1="132" y1="162" x2="138" y2="212" stroke="#be123c" stroke-width="1.5"/>`,
+        
+        // 3: 키치 반바지
+        `<path d="M 98 163 L 142 163 L 145 208 L 122 208 L 120 185 L 118 208 L 95 208 Z" fill="#475569"/>`
+    ];
+
+    const shoes = [
+        "", // 0: 맨발
+        // 1: 캔버스 운동화
+        `<path d="M 100 322 L 117 322 L 117 334 C 117 337 100 337 98 334 Z" fill="#ffffff"/>
+         <path d="M 123 322 L 140 322 L 142 334 C 140 337 123 337 123 334 Z" fill="#ffffff"/>
+         <path d="M 100 325 L 116 325 L 116 331 L 99 331 Z" fill="#ef4444"/>
+         <path d="M 124 325 L 140 325 L 141 331 L 124 331 Z" fill="#ef4444"/>`,
+        
+        // 2: 시크 롱부츠
+        `<path d="M 101 250 L 118 250 L 117 335 L 97 335 Z" fill="#1e293b"/>
+         <path d="M 122 250 L 139 250 L 143 335 L 123 335 Z" fill="#1e293b"/>`,
+
+        // 3: 트렌디 워커 (새로 추가!)
+        `<path d="M 100 280 L 118 280 L 118 335 L 95 335 Z" fill="#78350f"/>
+         <path d="M 122 280 L 140 280 L 145 335 L 122 335 Z" fill="#78350f"/>
+         <!-- 끈 디테일 -->
+         <line x1="103" y1="290" x2="115" y2="290" stroke="#fef3c7" stroke-width="1.5"/>
+         <line x1="103" y1="300" x2="115" y2="300" stroke="#fef3c7" stroke-width="1.5"/>
+         <line x1="125" y1="290" x2="137" y2="290" stroke="#fef3c7" stroke-width="1.5"/>
+         <line x1="125" y1="300" x2="137" y2="300" stroke="#fef3c7" stroke-width="1.5"/>`
+    ];
+
+    function setHair(idx) { document.getElementById('layerHair').innerHTML = hairs[idx]; }
+    function setTop(idx) { document.getElementById('layerTop').innerHTML = tops[idx]; }
+    function setBottom(idx) { document.getElementById('layerBottom').innerHTML = bottoms[idx]; }
+    function setShoes(idx) { document.getElementById('layerShoes').innerHTML = shoes[idx]; }
+
+    function randomStyle() {
+        setHair(Math.floor(Math.random() * hairs.length));
+        setTop(Math.floor(Math.random() * tops.length));
+        setBottom(Math.floor(Math.random() * bottoms.length));
+        setShoes(Math.floor(Math.random() * shoes.length));
+    }
+
+    function resetStyle() {
+        setHair(0);
+        setTop(0);
+        setBottom(0);
+        setShoes(0);
+    }
+
+    // 기본 의상 착용 세팅
+    setHair(1);
+    setTop(1);
+    setBottom(2);
+    setShoes(2);
+</script>
+
+</body>
+</html>
